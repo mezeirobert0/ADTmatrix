@@ -1,14 +1,20 @@
 #pragma once
+#include "Node.h"
 
-//DO NOT CHANGE THIS PART
 typedef int TElem;
 #define NULL_TELEM 0
 
 class Matrix {
 
 private:
-	//TODO - Representation
+	Node* head;
+	Node* tail;
+	int lines;
+	int cols;
+
 public:
+	friend class Node;
+
 	//constructor
 	Matrix(int nrLines, int nrCols);
 
@@ -27,4 +33,5 @@ public:
 	//throws exception if (i,j) is not a valid position in the Matrix
 	TElem modify(int i, int j, TElem e);
 
+	~Matrix();
 };
