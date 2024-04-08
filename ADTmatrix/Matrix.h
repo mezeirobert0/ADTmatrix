@@ -34,4 +34,6 @@ public:
 	TElem modify(int i, int j, TElem e);
 
 	~Matrix();
+
+	void resize(int newLines, int newCol);
 };

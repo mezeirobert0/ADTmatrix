@@ -244,3 +244,33 @@ Matrix::~Matrix() {
 	head = nullptr;
 	tail = nullptr;
 }
+
+//best case : O(1)
+//worst case: O(n), where n = number non-zero elements of the matrix
+void Matrix::resize(int newLines, int newCols) {
+	if (newLines <= 0)
+		throw std::invalid_argument("Number of lines should be greater than zero!");
+	
+	if (newCols <= 0)
+		throw std::invalid_argument("Number of columns should be greater than zero!");
+	
+	if (newLines >= this->lines && newCols >= this->cols)
+	{
+		this->lines = newLines;
+		this->cols = newCols;
+
+		return;
+	}
+
+	this->lines = newLines;
+	this->cols = newCols;
+
+	while (tail->line >= lines || tail->col >= cols) {
+		Node* currNode = tail;
+		
+		tail = tail->prev;
+		tail->next = nullptr;
+
+		delete currNode;
+	}
+}
